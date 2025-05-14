@@ -1,3 +1,4 @@
+
 import streamlit as st
 import yfinance as yf
 import pandas as pd
@@ -29,27 +30,26 @@ tickers = [ticker + ".AX" for ticker in tickers]
 # Combined DataFrame
 all_data = []
 
+# -----------------------------
+# Fetch and process data
 with st.spinner("Fetching data, please wait..."):
     for ticker in tickers:
         try:
-            data = yf.download(ticker + ".AX", period="180d", progress=False)
+            data = yf.download(ticker, period="180d", progress=False)
             if data.empty or 'Close' not in data.columns:
-                st.warning(f"No data for {ticker}")
                 continue
-
-            # Clean and prepare data
+            
+            # Create a new DataFrame with just the 'Close' column
             data_cleaned = pd.DataFrame()
-            data_cleaned['Date'] = data.index
-            data_cleaned['Close'] = data['Close']  # SAFE assignment as Series
-            data_cleaned['MA20'] = data['Close'].rolling(window=20).mean()
-            data_cleaned['MA50'] = data['Close'].rolling(window=50).mean()
-            data_cleaned['Ticker'] = ticker
-
+            data_cleaned['Close'] = data['Close']
+            data_cleaned['MA20'] = data_cleaned['Close'].rolling(window=20).mean()
+            data_cleaned['MA50'] = data_cleaned['Close'].rolling(window=50).mean()
+            data_cleaned['Ticker'] = ticker.replace(".AX", "")
+            data_cleaned.reset_index(inplace=True)
             all_data.append(data_cleaned)
 
         except Exception as e:
             st.warning(f"Failed to fetch data for {ticker}: {e}")
-
 
 # Combine all into one CSV
 if all_data:

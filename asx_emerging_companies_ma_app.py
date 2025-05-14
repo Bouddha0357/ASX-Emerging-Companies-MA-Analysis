@@ -6,7 +6,7 @@ import io
 
 # -----------------------------
 # Config
-st.set_page_config(page_title="Combined Stock Data Downloader", layout="wide", page_icon="📈")
+st.set_page_config(page_title="ASX Emerging Companies Stock Data Downloader", layout="wide", page_icon="📈")
 st.title("📈 Combined Stock Data - Closing Price, MA20 & MA50 (Last 180 Days)")
 
 # -----------------------------

@@ -35,14 +35,18 @@ with st.spinner("Fetching data, please wait..."):
     for ticker in tickers:
         try:
             data = yf.download(ticker, period="180d", progress=False)
-            if data.empty:
+            if data.empty or 'Close' not in data.columns:
                 continue
-            data_cleaned = data[['Close']].copy()
+            
+            # Create a new DataFrame with just the 'Close' column
+            data_cleaned = pd.DataFrame()
+            data_cleaned['Close'] = data['Close']
             data_cleaned['MA20'] = data_cleaned['Close'].rolling(window=20).mean()
             data_cleaned['MA50'] = data_cleaned['Close'].rolling(window=50).mean()
             data_cleaned['Ticker'] = ticker.replace(".AX", "")
             data_cleaned.reset_index(inplace=True)
             all_data.append(data_cleaned)
+
         except Exception as e:
             st.warning(f"Failed to fetch data for {ticker}: {e}")
 

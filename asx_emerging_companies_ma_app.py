@@ -7,7 +7,7 @@ import io
 # -----------------------------
 # Config
 st.set_page_config(page_title="ASX Emerging Companies Stock Data Downloader", layout="wide", page_icon="📈")
-st.title("📈 Combined Stock Data - Closing Price, MA20 & MA50 (Last 180 Days)")
+st.title("📈 Combined Stock Data - Closing Price, MA20 & MA50 (Last 1000 Days)")
 
 # -----------------------------
 # ASX Ticker List (from your screenshot)
@@ -35,7 +35,7 @@ all_data = []
 with st.spinner("Fetching data, please wait..."):
     for ticker in tickers:
         try:
-            data = yf.download(ticker, period="180d", progress=False)
+            data = yf.download(ticker, period="1000d", progress=False)
             if data.empty or 'Close' not in data.columns:
                 continue
             
@@ -64,3 +64,4 @@ if all_data:
     )
 else:
     st.error("No data was fetched. Please try again later or check ticker symbols.")
+

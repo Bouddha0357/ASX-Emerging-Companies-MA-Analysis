@@ -18,8 +18,8 @@ tickers = [
     "ANO", "AXE", "BLX", "BOE", "CAT", "CEL", "CLV", "TSO", "CTM", "CXO", "DUB", "MDR", "EVO", "GLL",
     "INR", "ZNO", "HAS", "IMA", "IMU", "NET", "JRV", "LEG", "TTM", "MNS", "FFM", "MVF", "E25", "HE8",
     "ALC", "EVS", "PNR", "PPK", "PPS", "RUL", "3DP", "STX", "SVY", "YOJ", "TLG", "VMT", "GSS", "4DS",
-    "SLC", "WZR", "AHI", "ENN", "SRG", "KSL", "LTR", "NVA", "WBT", "SVL", "TOT", "AIS", "IGL", "RCE",
-    "OBM", "MTO", "RAC", "NOX", "QOR", "ASG", "KLL", "HTG", "BET", "BSX", "AOF", "CAN", "PPE", "PFP",
+    "SLC", "WZR", "ENN", "SRG", "KSL", "LTR", "NVA", "WBT", "SVL", "TOT", "AIS", "IGL", "RCE",
+    "OBM", "MTO", "RAC", "NOX", "QOR", "ASG", "HTG", "BET", "BSX", "AOF", "CAN", "PPE", "PFP",
     "WGN", "RHY", "ADT", "VUL", "CXL", "EMV", "AMS", "EOF", "NXS", "VVA", "ECF", "MME", "AT1", "TUA",
     "ARX", "4DX", "AIM", "PLT", "HPG", "UNI", "HMY", "DOC", "GNP", "CTT"
 ]
@@ -64,5 +64,6 @@ if all_data:
     )
 else:
     st.error("No data was fetched. Please try again later or check ticker symbols.")
+
 
 

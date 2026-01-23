@@ -13,7 +13,7 @@ st.title("📈 Combined Stock Data - Closing Price, MA20 & MA50 (Last 180 Days)"
 # ASX Ticker List (from your screenshot)
 tickers = [
     "EGG", "NGI", "KCN", "CCV", "FWD", "MCP", "PDN", "DYL", "GRR", "REX", "RIC", "SLX", "SRV", "TGP",
-    "PAC", "TRS", "CVN", "OMH", "SWM", "A4N", "BFG", "ETM", "HLO", "PYC", "FLC", "SXE", "ARU", "RFG",
+    "PAC", "TRS", "CVN", "OMH", "A4N", "BFG", "ETM", "HLO", "PYC", "FLC", "SXE", "ARU", "RFG",
     "IMM", "CEH", "MYR", "TBR", "ADO", "SVR", "NEU", "NMT", "OFX", "SYR", "NTU", "M7T", "3PL", "ST1",
     "ANO", "AXE", "BLX", "BOE", "CAT", "CEL", "CLV", "TSO", "CTM", "CXO", "DUB", "MDR", "EVO", "GLL",
     "INR", "ZNO", "HAS", "IMA", "IMU", "NET", "JRV", "LEG", "TTM", "MNS", "FFM", "MVF", "E25", "HE8",
@@ -64,6 +64,7 @@ if all_data:
     )
 else:
     st.error("No data was fetched. Please try again later or check ticker symbols.")
+
 
 
 

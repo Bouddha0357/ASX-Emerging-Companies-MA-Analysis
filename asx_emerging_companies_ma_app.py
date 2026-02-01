@@ -12,16 +12,53 @@ st.title("📈 Combined Stock Data - Closing Price, MA20 & MA50 (Last 180 Days)"
 # -----------------------------
 # ASX Ticker List (from your screenshot)
 tickers = [
-    "EGG", "NGI", "KCN", "CCV", "FWD", "MCP", "PDN", "DYL", "GRR", "REX", "RIC", "SLX", "SRV", "TGP",
-    "PAC", "TRS", "CVN", "OMH", "A4N", "BFG", "ETM", "HLO", "PYC", "FLC", "SXE", "ARU", "RFG",
-    "IMM", "CEH", "MYR", "TBR", "ADO", "SVR", "NEU", "NMT", "OFX", "SYR", "NTU", "M7T", "3PL", "ST1",
-    "ANO", "AXE", "BLX", "BOE", "CAT", "CEL", "CLV", "TSO", "CTM", "CXO", "DUB", "MDR", "EVO", "GLL",
-    "INR", "ZNO", "HAS", "IMA", "IMU", "NET", "JRV", "LEG", "TTM", "MNS", "FFM", "MVF", "E25", "HE8",
-    "ALC", "EVS", "PNR", "PPK", "PPS", "RUL", "3DP", "STX", "SVY", "YOJ", "TLG", "VMT", "GSS", "4DS",
-    "SLC", "WZR", "ENN", "SRG", "KSL", "LTR", "NVA", "WBT", "SVL", "TOT", "AIS", "IGL", "RCE",
-    "OBM", "MTO", "RAC", "NOX", "QOR", "ASG", "HTG", "BET", "BSX", "AOF", "CAN", "PPE", "PFP",
-    "WGN", "RHY", "ADT", "VUL", "CXL", "EMV", "AMS", "EOF", "NXS", "VVA", "ECF", "MME", "AT1", "TUA",
-    "ARX", "4DX", "AIM", "PLT", "HPG", "UNI", "HMY", "DOC", "GNP", "CTT"
+     "IFT",	 "REH",	 "JBH",	 "QUB",	 "NXT",	 "TNE",	 "RHC",	 "CEN",	 "HVN",	 "APE",	 "SEK",	 "MCY",	 "TPG",	 "CDA",
+     "ALX",	 "360",	 "EDV",	 "WOR",	 "AZJ",	 "BEN",	 "A2M",	 "AGL",	 "SDF",	 "CWY",	 "DOW",	 "ANN",	 "VNT",	 "BRG",
+     "BOQ",	 "EBO",	 "TWE",	 "BFL",	 "AUB",	 "TUA",	 "TLX",	 "MTS",	 "SPK",	 "CNU",	 "FBU",	 "LOV",	 "MSB",	 "FLT",
+     "SUL",	 "DRO",	 "NHF",	 "ASB",	 "MND",	 "RWC",	 "RYM",	 "NWH",	 "VGN",	 "DBI",	 "SNZ",	 "GNE",	 "GYG",	 "DMP",
+     "FRW",	 "GDG",	 "NCK",	 "SLX",	 "ARB",	 "NEU",	 "PMV",	 "MP1",	 "TAH",	 "JDO",	 "EVT",	 "REG",	 "MGH",	 "4DX",
+     "SRG",	 "BGA",	 "CBO",	 "DDR",	 "MAQ",	 "EOS",	 "NEC",	 "WEB",	 "SNL",	 "IEL",	 "RDX",	 "MAD",	 "GNC",	 "AIZ",
+     "ELD",	 "IRE",	 "DTL",	 "OCL",	 "TPW",	 "SDR",	 "GNP",	 "SSM",	 "ABB",	 "CKF",	 "BGP",	 "SLC",	 "MMS",	 "WBT",
+     "CU6",	 "NAN",	 "SIQ",	 "AOV",	 "TEA",	 "RUL",	 "SGLLV",  "ELS",	 "CAT",	 "SGR",	 "KLS",	 "HSN",	 "HGH",	 "IPH",
+     "IDX",	 "PWH",	 "PYC",	 "BVS",	 "C79",	 "ING",	 "RIC",	 "SKC",	 "AVR",	 "CVL",	 "AAC",	 "ASG",	 "FCL",	 "MYR",
+     "SYL",	 "MYS",	 "GTK",	 "BAP",	 "PNV",	 "GWA",	 "OML",	 "PFP",	 "EHL",	 "SXE",	 "SHV",	 "TRA",	 "JIN",	 "IMR",
+     "HLS",	 "IMM",	 "UNI",	 "LYL",	 "NXL",	 "AYA",	 "BLX",	 "TWR",	 "DUR",	 "CUV",	 "AX1",	 "SHA",	 "OCA",	 "GEM",
+     "SPZ",	 "ACL",	 "EOL",	 "THL",	 "KSC",	 "IPG",	 "IGL",	 "QOR",	 "EBR",	 "MPW",	 "AIH",	 "RAC",	 "LGI",	 "VGL",
+     "SKS",	 "SKT",	 "PPS",	 "APX",	 "MYG",	 "KGN",	 "AMA",	 "AD8",	 "KSL",	 "PGC",	 "CGS",	 "BRN",	 "AGI",	 "AGIE",
+     "NVX",	 "CVW",	 "ACF",	 "KPG",	 "SST",	 "RDY",	 "HLO",	 "AFP",	 "EIQ",	 "3DA",	 "SKO",	 "ADH",	 "XRF",	 "WJL",
+     "SM1",	 "PBH",	 "BBN",	 "PWR",	 "DXB",	 "WRK",	 "SXL",	 "SLD",	 "IMB",	 "SFC",	 "MVF",	 "CMA",	 "ONE",	 "FWD",
+     "ACE",	 "BBT",	 "DUG",	 "ATA",	 "RIV",	 "LAU",	 "OCC",	 "ARX",	 "MYX",	 "SGI",	 "BET",	 "BOT",	 "CTT",	 "MTO",
+     "CEH",	 "NYR",	 "TTX",	 "SSG",	 "ERD",	 "CUP",	 "AVH",	 "EPI",	 "CLX",	 "NZM",	 "LDX",	 "AQZ",	 "KOV",	 "PEB",
+     "WAT",	 "RCT",	 "RCE",	 "SEA",	 "IKE",	 "3PL",	 "SPL",	 "ANG",	 "EMV",	 "ALC",	 "AHX",	 "KMD",	 "BBL",	 "MHJ",
+     "JYC",	 "DAI",	 "EWC",	 "IFN",	 "SOM",	 "ART",	 "ACW",	 "HPG",	 "AAL",	 "AHC",	 "CYC",	 "PAR",	 "VLS",	 "SND",
+     "VVA",	 "AIM",	 "NOL",	 "FDV",	 "MCA",	 "CCR",	 "BWN",	 "BUB",	 "YOJ",	 "EVO",	 "ECL",	 "NDO",	 "BB1",	 "MXI",
+     "PLY",	 "A1N",	 "SHJ",	 "VNL",	 "GLB",	 "AV1",	 "SDI",	 "VFY",	 "HNG",	 "EDU",	 "ALA",	 "TWD",	 "M7T",	 "NZK",
+     "AL3",	 "ABY",	 "FLC",	 "BIO",	 "COV",	 "ARA",	 "ILA",	 "ITS",	 "LIS",	 "ATG",	 "IMU",	 "LTP",	 "FLN",	 "TRJ",
+     "KYP",	 "AXE",	 "IOD",	 "OIL",	 "PIQ",	 "BPG",	 "RFG",	 "EXP",	 "ROC",	 "VEE",	 "EGL",	 "BXN",	 "NVU",	 "DBF",
+     "ATH",	 "SKK",	 "EZZ",	 "CMP",	 "PHX",	 "ATP",	 "COS",	 "RAD",	 "AHL",	 "PTX",	 "PPE",	 "CYP",	 "ESK",	 "SHG",
+     "SEG",	 "HIT",	 "LBL",	 "CYG",	 "JAN",	 "VR1",	 "VBC",	 "TPC",	 "ATX",	 "LRK",	 "FFI",	 "RKN",	 "BOL",	 "SMN",
+     "SHO",	 "STP",	 "CC5",	 "SPG",	 "MX1",	 "RNT",	 "IRI",	 "PPL",	 "DCC",	 "EGG",	 "ECT",	 "BMT",	 "MAP",	 "NUZ",
+     "SHM",	 "ABV",	 "PCK",	 "SIX",	 "NXD",	 "RHY",	 "UBN",	 "GTN",	 "MVP",	 "DSK",	 "SNT",	 "FRM",	 "CTE",	 "CSX",
+     "WWG",	 "DOC",	 "IIQ",	 "AR9",	 "ENP",	 "SWP",	 "DUB",	 "RWL",	 "EYE",	 "SIO",	 "EMD",	 "AI1",	 "ADO",	 "CCX",
+     "HMD",	 "NSB",	 "IPD",	 "AMS",	 "BDX",	 "NXN",	 "AQN",	 "FLX",	 "RTH",	 "DVL",	 "CPV",	 "SNS",	 "MPP",	 "3DP",
+     "CVB",	 "MBH",	 "VRS",	 "1AI",	 "GTI",	 "NTD",	 "FTI",	 "KPO",	 "RKT",	 "VIT",	 "MFD",	 "GSS",	 "VHL",	 "CHL",
+     "GUM",	 "KLV",	 "AVE",	 "LGP",	 "CCG",	 "5GN",	 "FRX",	 "ASH",	 "AGN",	 "DEM",	 "SEN",	 "BLG",	 "CNQ",	 "TCO",
+     "BBC",	 "NOU",	 "ASV",	 "XRG",	 "RMY",	 "S66",	 "KME",	 "EVZ",	 "AVG",	 "HCT",	 "AT1",	 "MCP",	 "ZGL",	 "XF1",
+     "CCE",	 "MOV",	 "OLL",	 "VMT",	 "CQT",	 "TAL",	 "FBR",	 "VPR",	 "HCL",	 "STG",	 "DTZ",	 "GAP",	 "W2V",	 "A3D",
+     "AMX",	 "CBL",	 "NC6",	 "CLU",	 "ASP",	 "OEC",	 "TRI",	 "ATV",	 "NOX",	 "DEL",	 "ICE",	 "IDT",	 "IME",	 "STH",
+     "EPX",	 "AHF",	 "RHT",	 "CXZ",	 "NUC",	 "AAP",	 "HTG",	 "EAX",	 "NTI",	 "EXT",	 "AVA",	 "LPE",	 "IS3",	 "PKP",
+     "NOV",	 "TRP",	 "CLG",	 "4DS",	 "PAB",	 "EMB",	 "ICR",	 "RNV",	 "JCS",	 "JAT",	 "TNY",	 "AKG",	 "BPP",	 "JNS",
+     "AFL",	 "OVT",	 "MXO",	 "ADR",	 "FRE",	 "CCO",	 "DTI",	 "CYB",	 "SKN",	 "FOS",	 "OSL",	 "RPM",	 "IG6",	 "MEM",
+     "CAN",	 "5GG",	 "ODA",	 "AHE",	 "DWG",	 "RCL",	 "AJL",	 "FMR",	 "CMB",	 "BCC",	 "AUA",	 "AMO",	 "SP8",	 "CF1",
+     "1CG",	 "AEI",	 "IVG",	 "CML",	 "TR8",	 "1AD",	 "IGN",	 "AD1",	 "EPN",	 "SP3",	 "TZL",	 "STV",	 "IBX",	 "ENL",
+     "IMC",	 "TRU",	 "WOA",	 "CHM",	 "BSA",	 "SPX",	 "14D",	 "UNT",	 "PET",	 "FCT",	 "PFT",	 "SPA",	 "SOP",	 "DXN",
+     "AVD",	 "WNX",	 "EGY",	 "SFG",	 "T3D",	 "ECS",	 "BEO",	 "RLG",	 "X2M",	 "VFX",	 "HIQ",	 "IXC",	 "REM",	 "MNC",
+     "PER",	 "GLE",	 "CDE",	 "PRO",	 "BIT",	 "HMI",	 "IVX",	 "NVQ",	 "AER",	 "ZLD",	 "AUK",	 "SIS",	 "OMG",	 "SOC",
+     "VBS",	 "NOR",	 "WHK",	 "PTL",	 "PKY",	 "IFG",	 "XGL",	 "8CO",	 "NGS",	 "XPN",	 "ACR",	 "IRX",	 "ADS",	 "H2G",
+     "PKD",	 "RFT",	 "OSX",	 "KNO",	 "ZMM",	 "HYD",	 "OLI",	 "DDT",	 "GLH",	 "RGT",	 "EXL",	 "ANR",	 "SRH",	 "ERG",
+     "HT8",	 "HFY",	 "TML",	 "BP8",	 "LVE",	 "AN1",	 "CGO",	 "PFM",	 "BGE",	 "CT1",	 "TD1",	 "OLH",	 "OAK",	 "CTQ",
+     "HPC",	 "TFL",	 "CYQ",	 "MSG",	 "BMH",	 "1TT",	 "MSI",
+
 ]
 
 # Add ".AX" to each ticker for Yahoo Finance
@@ -64,6 +101,7 @@ if all_data:
     )
 else:
     st.error("No data was fetched. Please try again later or check ticker symbols.")
+
 
 
 
